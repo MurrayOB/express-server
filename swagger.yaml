@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Server
+  contact: {}
+  version: '1.0'
+servers:
+  - url: http://localhost:5000/api/v1
+    variables: {}
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Get Users
+      operationId: CreateUser
+      parameters: []
+      responses:
+        '200':
+          description: 'Ok'
+          headers: {}
+      deprecated: false
+  /users/register:
+    post:
+      tags:
+        - Users
+      summary: Register User
+      operationId: RegisterUser
+      parameters: []
+      responses:
+        '200':
+          description: 'Ok'
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    RegisterUserRequest:
+      title: RegisterUserRequest
+      required:
+        - name
+        - email
+        - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: bob
+        email: bob@gmail.com
+        password: secret
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+  - httpBearer: []
+tags:
+  - name: Users
+    description: ''
+      
